@@ -2,12 +2,12 @@ import React from "react";
 import { Stack, Box } from "@mui/material";
 import { VideoCard, ChannelCard } from "./";
 
-const Videos = ({ videos }) => {
+const Videos = ({ videos, justifyContent }) => {
   return (
     <Stack
       direction="row"
       flexWrap="wrap"
-      justifyContent={{ md: "flex-start", xs: "center" }}
+      justifyContent={{ md: justifyContent, xs: "center" }}
       gap={{ md: 3, xs: 2 }}
     >
       {videos.map((item, idx) => (
