@@ -1,13 +1,26 @@
 import React from "react";
-import { Stack, Box } from "@mui/material";
+import { Stack, Box, CircularProgress } from "@mui/material";
 import { VideoCard, ChannelCard } from "./";
 
-const Videos = ({ videos, justifyContent }) => {
+const Videos = ({ videos, justifyContent, direction }) => {
+  if (!videos?.length)
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress color="error" />
+      </div>
+    );
+
   return (
     <Stack
-      direction="row"
+      direction={direction || "row"}
       flexWrap="wrap"
-      justifyContent={{ md: justifyContent, xs: "center" }}
+      justifyContent={{ xs: "center", md: justifyContent }}
       gap={{ md: 3, xs: 2 }}
     >
       {videos.map((item, idx) => (
