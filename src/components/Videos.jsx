@@ -1,20 +1,9 @@
 import React from "react";
-import { Stack, Box, CircularProgress } from "@mui/material";
-import { VideoCard, ChannelCard } from "./";
+import { Stack, Box } from "@mui/material";
+import { VideoCard, ChannelCard, Loader } from "./";
 
 const Videos = ({ videos, justifyContent, direction }) => {
-  if (!videos?.length)
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <CircularProgress color="error" />
-      </div>
-    );
+  if (!videos?.length) return <Loader />;
 
   return (
     <Stack

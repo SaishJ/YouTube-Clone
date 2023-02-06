@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Typography, Box, Stack, CircularProgress, Grid } from "@mui/material";
+import { Typography, Box, Stack, Grid } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
-import { Videos } from "./";
+import { Loader, Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 const VideoDeatail = () => {
@@ -21,17 +21,7 @@ const VideoDeatail = () => {
     );
   }, [id]);
 
-  if (!videoDetail?.snippet)
-    return (
-      <div
-        style={{
-          display: "grid",
-          placeContent: "center",
-        }}
-      >
-        <CircularProgress color="error" />
-      </div>
-    );
+  if (!videoDetail?.snippet) return <Loader />;
 
   const {
     snippet: { title, channelId, channelTitle },
