@@ -76,4 +76,7 @@ a {
   .search-bar {
     width: 200px;
   }
+  .react-player {
+    height: 300px !important;
+  }
 }

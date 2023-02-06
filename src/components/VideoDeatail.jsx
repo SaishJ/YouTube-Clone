@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Typography, Box, Stack, CircularProgress } from "@mui/material";
+import { Typography, Box, Stack, CircularProgress, Grid } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
@@ -25,9 +25,8 @@ const VideoDeatail = () => {
     return (
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          display: "grid",
+          placeContent: "center",
         }}
       >
         <CircularProgress color="error" />
@@ -41,58 +40,45 @@ const VideoDeatail = () => {
 
   return (
     <Box minHeight="95vh">
-      <Stack direction={{ xs: "column", md: "row" }}>
-        <Box flex={1}>
-          <Box sx={{ position: "sticky", top: "78px", p: "10px" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={7}>
+          <Box p="0 10px" position={{ md: "sticky" }} top={{ md: "78px" }}>
             <ReactPlayer
-              height="480px"
+              className="react-player"
               width="100%"
+              height="400px"
               url={`https://www.youtube.com/watch?v=${id}`}
               controls
             />
-            <Typography color="#fff" variant="h6" fontWeight="bold" p={2}>
+            <Typography color="#fff" variant="subtitle1" p="6px 0">
               {title}
             </Typography>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              sx={{ color: "#fff" }}
-              py={1}
-              px={2}
-            >
+            <Stack direction="row" justifyContent="space-between">
               <Link to={`/channel/${channelId}`}>
-                <Typography variant="subtitle1" color="#fff">
+                <Typography variant="subtitle2" color="gray">
                   {channelTitle}
                   <CheckCircle
-                    sx={{ fontSize: "14px", color: "gray", ml: "6px" }}
+                    sx={{ fontSize: "15px", color: "gray", ml: "5px" }}
                   />
                 </Typography>
               </Link>
-              <Stack direction="row" gap="15px">
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+              <Stack direction="row" gap="10px">
+                <Typography variant="subtitle2" color="gray">
                   {parseInt(viewCount).toLocaleString()} views
                 </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                <Typography variant="subtitle2" color="gray">
                   {parseInt(likeCount).toLocaleString()} likes
                 </Typography>
               </Stack>
             </Stack>
           </Box>
-        </Box>
-        {/* Videos */}
-        <Box
-          px={2}
-          py={{ md: 1, xs: 5 }}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Videos
-            videos={videos}
-            direction={{ sm: "row", md: "column" }}
-            justifyContent="center"
-          />
-        </Box>
-      </Stack>
+        </Grid>
+        <Grid item md={5}>
+          <Box>
+            <Videos videos={videos} />
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
