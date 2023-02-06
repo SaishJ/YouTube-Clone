@@ -12,4 +12,4 @@
 ![image](https://user-images.githubusercontent.com/59008917/216392382-736a16d9-23ba-421c-92f8-7765daf0160c.png)
 
 ### Video Detail
-![image](https://user-images.githubusercontent.com/59008917/216392726-fa2f30d4-794b-4e78-94ec-1b07684d2c98.png)
+![image](https://user-images.githubusercontent.com/59008917/217009351-ae03b2ca-7881-4057-8789-85b942712b78.png)
